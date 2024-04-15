@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>js解混淆</title>
+        <script src="codemirror/codemirror.js"></script>
+        <link rel="stylesheet" href="codemirror/codemirror.css">
+    </head>
+    <body>
+        <textarea name="source" id="source"></textarea>
+        <button id="transform" onclick="transform(source, result)">转换</button>
+        <textarea name="result" id="result"></textarea>
+        
+
+        <script src="codemirror/javascript.js"></script>
+        <script src="babel/babel.min.js" type="text/javascript"></script>
+        <script src="transform.js" type="text/javascript"></script>
+        <script>
+            var source = CodeMirror.fromTextArea(document.getElementById("source"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                continueComments: "Enter",
+                extraKeys: {"Ctrl-Q": "toggleComment"}
+            });
+            var result = CodeMirror.fromTextArea(document.getElementById("result"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                readOnly: true,
+                continueComments: "Enter",
+                extraKeys: {"Ctrl-Q": "toggleComment"}
+            });
+        </script>
+    </body>
+</html>
