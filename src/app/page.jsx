@@ -606,5 +606,16 @@ export default function Page() {
                 </div>
             </div>
         </div>
+        <div id="contribution">
+             Built with 
+            <a href="https://Nextjs.org/">Nextjs</a>,
+            <a href="https://reactjs.org/">React</a>,
+            <a href="https://babeljs.io/">Babel</a>,
+            <a href="https://codemirror.net/">CodeMirror</a>,
+            and
+            <a href="https://webpack.js.org/">webpack</a>
+            |
+            <a href="https://github.com/zgsla/confusion-resolution">GitHub</a>
+        </div>
     </div>
   }

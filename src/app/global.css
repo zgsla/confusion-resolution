@@ -35,6 +35,16 @@ div {
     height: 100%;
 }
 
+#contribution {
+    font-size: 0.9em;
+    color: #555;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    background-color: #efefef;
+    border-top: 1px solid #ddd;
+}
+
 #Toolbar {
     flex: 0 0 auto;
     font-family: monospace;
