@@ -40,6 +40,7 @@ export default forwardRef(function Editor(props: Props, ref) {
                 javascript(),
                 // A line number gutter
                 lineNumbers(),
+                // EditorView.lineWrapping,
                 // A gutter with code folding markers
                 foldGutter(),
                 // Replace non-printable characters with placeholders
@@ -53,7 +54,7 @@ export default forwardRef(function Editor(props: Props, ref) {
                 // Allow multiple cursors/selections
                 EditorState.allowMultipleSelections.of(true),
                 // Re-indent lines when typing specific input
-                indentOnInput(),
+                // indentOnInput(),
                 // Highlight syntax with a default style
                 syntaxHighlighting(defaultHighlightStyle),
                 // Highlight matching brackets near cursor
@@ -93,15 +94,25 @@ export default forwardRef(function Editor(props: Props, ref) {
         return () => {
             editor.destroy()
         }
-    }, [])
+    }, [doc])
     useImperativeHandle(ref, () => ({
         getCode(){
             if(!editor) return
             return editor.state.doc.toString()
+        },
+        updateCode(code:string){
+            if(!editor) return
+            editor.dispatch({
+                changes: {
+                    from: 0,
+                    to: editor.state.doc.length,
+                    insert: code
+                }
+            })
         }
     }))
     return (
-        <div ref={containerRef}>
+        <div className="code-container" ref={containerRef}>
         </div>
     )
 })

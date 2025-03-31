@@ -2,10 +2,17 @@ html {
     font-size: 14px;
     box-sizing: border-box;
     font-family: Verdana, sans-serif;
+    display: block;
 }
 
 body {
     margin: 0;
+    display: block;
+}
+
+div {
+    display: block;
+    unicode-bidi: isolate;
 }
 
 #page {
@@ -188,11 +195,11 @@ body {
 .splitpane-right {
     display: flex;
     flex: 1 1 0%;
-    max-width: 0px;
+    min-height: 0px;
     min-width: 0px;
 }
 
-.source, .result {
+.code-container {
     display: flex;
     flex: 1;
     /* needed to make editor at most as wide as the parent splitpane*/
@@ -200,7 +207,8 @@ body {
     min-height: 0;
 }
 
-.CodeMirror{
-    height: auto;
+.cm-editor {
+    overflow-x: hidden;
+    height: 100%;
     flex: 1;
 }
