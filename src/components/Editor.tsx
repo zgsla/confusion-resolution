@@ -1,13 +1,13 @@
 'use client'
 import { useRef, useEffect, forwardRef, useImperativeHandle } from "react";
-import {Extension, EditorState} from "@codemirror/state"
+import {EditorState} from "@codemirror/state"
 import {
   EditorView, keymap, highlightSpecialChars, drawSelection,
   highlightActiveLine, dropCursor, rectangularSelection,
   crosshairCursor, lineNumbers, highlightActiveLineGutter
 } from "@codemirror/view"
 import {
-  defaultHighlightStyle, syntaxHighlighting, indentOnInput,
+  defaultHighlightStyle, syntaxHighlighting,
   bracketMatching, foldGutter, foldKeymap
 } from "@codemirror/language"
 import {
@@ -24,12 +24,7 @@ import {lintKeymap} from "@codemirror/lint"
 import { javascript } from "@codemirror/lang-javascript";
 
 
-type Props = {
-    doc: string
-}
-
-export default forwardRef(function Editor(props: Props, ref) {
-    const {doc} = props;
+export default forwardRef(function Editor({doc}: {doc: string}, ref) {
     const containerRef = useRef<HTMLDivElement>(null);
     let editor: EditorView;
     useEffect(() => {
@@ -100,7 +95,7 @@ export default forwardRef(function Editor(props: Props, ref) {
             if(!editor) return
             return editor.state.doc.toString()
         },
-        updateCode(code:string){
+        updateCode(code: string){
             if(!editor) return
             editor.dispatch({
                 changes: {
